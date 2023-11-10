@@ -42,13 +42,14 @@ include_once(__ROOT__ . "/Layout/head.php");
                 <div >
                         <table class="table table-striped Competences">
                             <thead>
-                                <tr>
-                                    <th style="width: 3%">Reference</th>
-                                    <th class="text-center" style="width: 9%">Code</th>
-                                    <th style="width: 20%">Nom</th>
-                                    <th style="width: 40%">Description</th>
-                                    <th style="width: 25%">Actions </th>
-                                </tr>
+                            <tr>
+                                <th style=\"width: 10%\">Nom de projet</th>
+                                <th class=\"text-center\" style=\"width: 40%\">Description</th>
+                                <th style=\"width: 10%\">Date de debut</th>
+                                <th style=\"width: 10%\">Date de fin</th>
+                                <th style=\"width: 10%\">Taches de projet</th>
+                                <th style=\"width: 25%\">Actions </th>
+                            </tr>
                             </thead>
                             <tbody>
                             </tbody>
