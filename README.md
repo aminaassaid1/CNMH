@@ -6,7 +6,7 @@
 [Rapport branch Conception-Realisation](https://docs.google.com/document/d/1hfqNOV81jhiQgnV9XCiAdwns-n27aWWlx2ntr-YKq7Q/edit?usp=sharing)</br>
 [link presentation CNMH](https://docs.google.com/presentation/d/1eqTbGiaLyyOMJetziejtZnW59hEXqczhZSS6x_CBnv4/edit?usp=sharing)
 
-## Travail à faire
+## Travail à faire :
 
 ### Lab Laravel Basic: (Gestion de Projet)
 
