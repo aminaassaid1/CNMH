@@ -7,9 +7,12 @@
 [link presentation CNMH](https://docs.google.com/presentation/d/1eqTbGiaLyyOMJetziejtZnW59hEXqczhZSS6x_CBnv4/edit?usp=sharing)
 
 ## Travail à faire
-Lab laravel basic : ( Gestion projet):
+# Lab laravel basic : ( Gestion projet):
+
 -CRUD des tâches
+
 -Pagination
+
 -Recherche (ajax)
 
 # Lab laravel standard ( Gestion Task ):
