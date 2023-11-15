@@ -14,14 +14,20 @@ Lab laravel basic : ( Gestion projet):
 
 # Lab laravel standard ( Gestion Task ):
 -CRUD des tâches
+
 -Pagination 
+
 -Recherche (ajax)
+
 -Repository pattern
 
 # Lab laravel starter:
 -Création d'une application laravel avec des packages que nous utilisons
+
 -Creation package 
+
 -AdminLTE
+
 -I18N
 
 
