@@ -8,20 +8,20 @@
 
 ## Travail à faire
 Lab laravel basic : ( Gestion projet):
-CRUD des tâches
-Pagination
-Recherche (ajax)
+-CRUD des tâches
+-Pagination
+-Recherche (ajax)
 
-#Lab laravel standard ( Gestion Task ):
-CRUD des tâches
-Pagination 
-Recherche (ajax)
-Repository pattern
+# Lab laravel standard ( Gestion Task ):
+-CRUD des tâches
+-Pagination 
+-Recherche (ajax)
+-Repository pattern
 
-#Lab laravel starter:
-Création d'une application laravel avec des packages que nous utilisons
-Creation package 
-AdminLTE
-I18N
+# Lab laravel starter:
+-Création d'une application laravel avec des packages que nous utilisons
+-Creation package 
+-AdminLTE
+-I18N
 
 
