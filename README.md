@@ -7,30 +7,29 @@
 [link presentation CNMH](https://docs.google.com/presentation/d/1eqTbGiaLyyOMJetziejtZnW59hEXqczhZSS6x_CBnv4/edit?usp=sharing)
 
 ## Travail à faire
-# Lab laravel basic : ( Gestion projet):
 
--CRUD des tâches
+### Lab Laravel Basic: (Gestion de Projet)
 
--Pagination
+- CRUD des tâches
+- Pagination
+- Recherche (Ajax)
 
--Recherche (ajax)
+### Lab Laravel Standard: (Gestion de Tâches)
 
-# Lab laravel standard ( Gestion Task ):
--CRUD des tâches
+- Affichage de Projet
+- Affichage de Tâche
+- CRUD des tâches
+- Pagination
+- Recherche (Ajax)
+- Filtrage de tâche
+- Modèle Repository
+- Jeux de Tests
 
--Pagination 
+### Lab Laravel Starter:
 
--Recherche (ajax)
-
--Repository pattern
-
-# Lab laravel starter:
--Création d'une application laravel avec des packages que nous utilisons
-
--Creation package 
-
--AdminLTE
-
--I18N
+- Création d'une application Laravel avec des packages que nous utilisons
+- Création de package
+- Intégration d'AdminLTE
+- Internationalisation (I18N)
 
 
