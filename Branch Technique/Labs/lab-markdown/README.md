@@ -51,7 +51,7 @@ This lab is dedicated to understanding and mastering Markdown, a lightweight and
 - [ ] Task 2
 
 7. Link
-   [Link Text](https://www.example.com)
+   [Link Text](/Branch%20Technique/Labs/lab-markdown/README.md)
 
 9. Image
 
