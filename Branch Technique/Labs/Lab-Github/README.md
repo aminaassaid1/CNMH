@@ -11,7 +11,7 @@ After collaborate with someone else to work on same repo
 ***First you need to clone your repo*** <br>
 
 ```
-git clone https://github.com/aminaassaid1/lab-github.git
+git clone https://github.com/aminaassaid1/CNMH.git
 
 ```
 ***than you need to clone your repo*** <br>
