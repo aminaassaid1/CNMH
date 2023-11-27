@@ -23,6 +23,7 @@ Web & Mobile developer
 
 **Database**
 * SQL/MySQL
+
 **Outils :**
 - Design :
   * Figma
@@ -54,13 +55,19 @@ Web & Mobile developer
 
 ## EXPÉRIENCE
 
-**Stage - Développeur web -ManifestAI** 01/08/2022 - 31/08/2022
-    J'ai développé une application web de gestion de colocation avec Bootstrap, HTML et CSS pour le frontend, et j'ai appliqué l'UML pour la conception de la base de données en utilisant la méthodologie MVC et les principes du Design Thinking.
+**Stage - Développeur web - ManifestAI** 01/08/2022 - 31/08/2022
 
-**Stage-Agent commercial-ONCF**   01/05/2022 - 31/05/2022
-    Accueil et orientation des voyageurs Fourniture d'informations sur les horaires et les itinéraires Assistance aux personnes à mobilité réduite Promotion des services Contrôle des billets Gestion des flux de passagers
-**Stage - Agent Technique de vent - Med packaging, melloussa**  01/05/2022 - 31/05/2022
-    Accueil et orientation des voyageurs Fourniture d'informations sur les horaires et les itinéraires Assistance aux personnes à mobilité réduite Promotion des services Contrôle des billets Gestion des flux de passagers
+J'ai développé une application web de gestion de colocation avec Bootstrap, HTML et CSS pour le frontend, et j'ai appliqué l'UML pour la conception de la base de données en utilisant la méthodologie MVC et les principes du Design Thinking.
+
+**Stage - Agent commercial - ONCF** 01/05/2022 - 31/05/2022
+
+Accueil et orientation des voyageurs Fourniture d'informations sur les horaires et les itinéraires Assistance aux personnes à mobilité réduite Promotion des services Contrôle des billets Gestion des flux de passagers
+
+**Stage - Agent Technique de vent - Med packaging, melloussa** 01/05/2022 - 31/05/2022
+
+Répondre aux demandes des clients et négocier les contrats.
+Saisir les commandes et assurer le suivi de leur exécution.
+
 
 
 
@@ -69,16 +76,19 @@ Web & Mobile developer
 ## FORMATIONS
 
 **Solicode - Centre Solidaire Digital, Tanger** 2023-2024.
+
 Mode Bootcamp - Développement Mobile
 
 **(OFPPT - SIMPLON) Solicode**  2022-2023.
-    Certificat en développement web.
-  
-**ISTA Ibn Marhal, Tanger**  2020-2022.
-    Technicien spécialisé en commerce
 
-** Lycee Qualifiant Al Jamai, Tangier **  2019-2020.
-    Technicien spécialisé en commerce
+Certificat en développement web.
+
+**ISTA Ibn Marhal, Tanger**  2020-2022.
+Technicien spécialisé en commerce
+
+**Lycee Qualifiant Al Jamai, Tangier**  2019-2020.
+Technicien spécialisé en commerce
+
 
 
 
