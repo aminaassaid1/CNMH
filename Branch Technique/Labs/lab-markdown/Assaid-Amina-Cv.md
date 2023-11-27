@@ -1,6 +1,6 @@
 
 # Assaid Amina
-![Profile](/Branch%20Technique/Labs/lab-markdown/profilecv.jpg)
+<img src="profile" alt="/Branch Technique/Labs/lab-markdown/profilecv.jpg" width="100">
 Web & Mobile developer
 
 ## COMPÉTENCES
