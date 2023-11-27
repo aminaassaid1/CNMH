@@ -1,5 +1,6 @@
 
 # Assaid Amina
+![Profile](/Branch%20Technique/Labs/lab-markdown/profilecv.jpg)
 Web & Mobile developer
 
 ## COMPÉTENCES
@@ -97,7 +98,7 @@ Technicien spécialisé en commerce
 - +212 643583885
 - Tanger
 - assaid.amina.solicode@gmail.com
-- [github](https://github.com/aminaassaid1)
+- [GitHub](https://github.com/aminaassaid1)
 - [linkedin](https://www.linkedin.com/in/amina-assaid-943989252/)
 
 ## LANGUES
