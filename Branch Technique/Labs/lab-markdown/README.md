@@ -2,7 +2,11 @@
 
 ## Travail a faire
 
-L'objectif de ce travail est de concevoir un CV en utilisant Markdown
+Oncevoir un Curriculum Vitae (CV) en Markdown, mettant en avant les antécédents éducatifs, l'expérience professionnelle, les compétences et les réalisations, accompagnés d'une image de profil.
+
+Markdown est choisi pour sa simplicité et sa lisibilité, permettant une création aisée de contenu bien organisé et esthétiquement agréable.
+
+L'accent est mis sur la clarté et la structure, en accord avec la syntaxe conviviale de Markdown
 
 ## Introduction
 
