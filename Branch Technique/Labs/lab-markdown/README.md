@@ -4,7 +4,7 @@
 
 L'objectif de ce travail est de concevoir un CV en utilisant Markdown
 
-## Introduction
+## Crétaire de validation
 
 Votre tâche consistera à présenter vos compétences de manière professionnelle en utilisant les règles simples de Markdown. Markdown est un format de texte clair et facile à personnaliser, largement utilisé dans le développement et la documentation.
 
