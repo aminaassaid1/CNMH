@@ -53,16 +53,20 @@ class TasksController extends Controller
         return view('tasks.edit', compact('task'));
     }
 
-    public function update(Request $request, Task $task)
+    public function update(Request $request,$id)
     {
         $request->validate([
             'name' => 'required',
             'description' => 'required'
         ]);
 
-        $task->name = $request->input('name');
-        $task->description = $request->input('description');
-        $task->save();
+        $task = Task::findOrFail($id);
+        $data = $request->all();
+        if($task){
+
+            $task->update($data);
+        }
+
 
         return redirect()->route('Tasks.index')->with('success', 'La tâche a été modifiée');
     }

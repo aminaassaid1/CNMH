@@ -3,8 +3,10 @@
 @section('content')
     <main class="container">
         <section>
-            <form method="POST" action="{{ route('Tasks.store') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('Tasks.update' , $task->id) }}" enctype="multipart/form-data">
+                @method('PUT')
                 @csrf
+
                 <div class="titlebar">
                     <h1>Modifier des tâches</h1>
                     <button type="submit">Save</button>
