@@ -78,7 +78,8 @@
 
                 </div>
                 <div class="table-paginate">
-                    {{-- {{ $tasks->links('layouts.pagination') }} --}}
+                    {{ $tasks->links() }}
+
                 </div>
 
             </div>
