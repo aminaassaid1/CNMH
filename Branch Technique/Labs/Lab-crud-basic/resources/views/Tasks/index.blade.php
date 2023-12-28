@@ -8,7 +8,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="float-sm-right">
-                        <a href="route('create')" class="btn btn-sm btn-primary">Ajouter tâche</a>
+                      <a href="{{route('create')}}" class="btn btn-sm btn-primary">Ajouter tâche</a>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        {{-- <div class="card-header col-md-12">
+                        <div class="card-header col-md-12">
                             <div class=" p-0">
                                 <div class="input-group input-group-sm float-sm-right col-md-3 p-0">
                                     <input type="text" id="table_search" name="table_search"
@@ -42,7 +42,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> --}}
+                        </div>
                         <div id="search_ajax">
                             <div class="card-body table-responsive p-0">
 
