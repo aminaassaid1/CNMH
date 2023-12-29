@@ -8,7 +8,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="float-sm-right">
-                      <a href="{{route('create')}}" class="btn btn-sm btn-primary">Ajouter tâche</a>
+                        <a href="{{ route('create') }}" class="btn btn-sm btn-primary">Ajouter tâche</a>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header ">
                             {{-- filter --}}
                             <div class="row d-flex justify-content-between">
                                 <div class="col-4">
@@ -39,6 +39,7 @@
                                                 class="fas fa-filter"></i></label>
                                         <select class="form-select form-control" id="filterSelectProjrctValue"
                                             aria-label="Filter Select">
+                                            <option value="Filtrer par projet">Filtrer par projet</option>
                                             @foreach ($Projects as $Project)
                                                 <option value="{{ $Project->id }}" name="{{ $Project->id }}">
                                                     {{ $Project->name }}
@@ -47,13 +48,12 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Recherche"
-                                            aria-label="Recherche" aria-describedby="basic-addon1" id="search-input">
-                                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
-                                    </div>
+                                <div class="input-group col-md-3">
+                                    <input type="text" class="form-control" placeholder="Recherche"
+                                        aria-label="Recherche" aria-describedby="basic-addon1" id="search-input">
+                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
                                 </div>
+
                             </div>
                         </div>
                         <div id="search_ajax">
