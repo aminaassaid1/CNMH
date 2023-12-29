@@ -14,11 +14,39 @@ class TaskController extends Controller
      * Display a listing of the resource.
      */
 
-        public function index()
-        {
-            $tasks = Task::with('project')->paginate(3);
-            return view('Tasks.index', compact('tasks'));
-        }
+     public function index(Request $request)
+     {
+
+         $Projects = Project::all();
+
+
+         if ($request->ajax()) {
+             $query = Task::query();
+             $search = $request->get('searchTaskValue');
+             // $Filter = $request->get('selectProjrctValue');
+             $search = str_replace(' ', '%', $search);
+
+             // if ($search && $Filter !== 'Filtrer par projet') {
+             //     $query->where('name', 'like', '%' . $search . '%')->where('project_id', $Filter)->paginate(3);
+             // }
+
+             if (empty($search)) {
+                 $Tasks = Task::with('project')->paginate(4);
+                 return view('Tasks.Search', compact('Tasks', 'Projects'));
+             }
+             if ($search) {
+                 $Tasks = $query->with('project')->where('name', 'like', '%' . $search . '%')->paginate(4);
+             }
+             return view('Tasks.Search', compact('Tasks', 'Projects'))->render();
+
+         }
+
+         $Tasks = Task::with('project')->paginate(4);
+         return view('Tasks.index', compact('Tasks', 'Projects'));
+
+
+     }
+
 
 
     /**

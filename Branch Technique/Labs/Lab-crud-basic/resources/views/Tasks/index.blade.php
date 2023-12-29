@@ -30,29 +30,34 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header col-md-12">
-                            <div class=" p-0">
-                                <div class="input-group input-group-sm float-sm-right col-md-3 p-0">
-                                    <input type="text" id="table_search" name="table_search"
-                                        class="form-control float-right" placeholder="Search">
-                                    <div class="input-group-append">
-                                        <button type="submit" class="btn btn-default">
-                                            <i class="fas fa-search"></i>
-                                        </button>
+                        <div class="card-header">
+                            {{-- filter --}}
+                            <div class="row d-flex justify-content-between">
+                                <div class="col-4">
+                                    <div class="input-group">
+                                        <label class="input-group-text" for="filterSelectProjrctValue"><i
+                                                class="fas fa-filter"></i></label>
+                                        <select class="form-select form-control" id="filterSelectProjrctValue"
+                                            aria-label="Filter Select">
+                                            @foreach ($Projects as $Project)
+                                                <option value="{{ $Project->id }}" name="{{ $Project->id }}">
+                                                    {{ $Project->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Recherche"
+                                            aria-label="Recherche" aria-describedby="basic-addon1" id="search-input">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div id="search_ajax">
-                            <div class="card-body table-responsive p-0">
-
-                                @include('../Layouts.Table')
-                            </div>
-                            <div class="d-flex justify-content-end align-items-center p-2">
-                                <div class="pagination  m-0 float-right">
-                                    {{ $tasks->links() }}
-                                </div>
-                            </div>
+                            @include('Tasks.Table')
                         </div>
                     </div>
                 </div>
