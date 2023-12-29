@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controller\ProjectsController ;
+use App\Http\Controller\TasksController ;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ProjectsController::class,'index'])->name('home');
