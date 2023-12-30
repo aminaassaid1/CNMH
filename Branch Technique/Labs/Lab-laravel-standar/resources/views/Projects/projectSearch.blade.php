@@ -1,15 +1,15 @@
-@foreach ($Tasks as $Task)
+@foreach ($projects as $project)
     <tr>
-        <td>{{ $Task->name }}</td>
-        <td>{{ $Task->project->name }}</td>
+        <td>{{ $project->name }}</td>
 
-        <td>{{ Str::limit($Task->description, 30) }} <a href="{{ route('show', $Task->id) }}">read more...</a></td>
+
+        <td>{{ Str::limit($project->description, 30) }} <a href="{{ route('show', $project->id) }}">read more...</a></td>
 
         <td class="d-flex">
-            <a href="{{ route('edit', ['task' => $Task->id]) }}" class="btn btn-sm btn-default mx-2">
+            <a href="{{ route('edit', ['task' => $project->id]) }}" class="btn btn-sm btn-default mx-2">
                 <i class="fa-solid fa-pen-to-square"></i>
             </a>
-            <form action="{{ route('destroy', ['task' => $Task->id]) }}" method="post">
+            <form action="{{ route('destroy', ['task' => $project->id]) }}" method="post">
                 @csrf
                 @method('delete')
                 <button type="submit" class="btn btn-sm btn-danger">
@@ -25,7 +25,7 @@
     <td></td>
     <td>
         <div class="pagination m-0 float-right">
-            {{ $Tasks->links() }}
+            {{ $project->links() }}
         </div>
 
     </td>

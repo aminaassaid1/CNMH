@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controller\ProjectsController ;
-use App\Http\Controller\TasksController ;
+use App\Http\Controllers\ProjectsController;
 
 
 /*
