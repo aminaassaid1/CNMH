@@ -94,12 +94,12 @@
         $(document).ready(function() {
             function fetchData(page, searchTaskValue, selectProjrctValue) {
                 $.ajax({
-                    url: '/?page=' + page + '&searchTaskValue=' + searchTaskValue + '&selectProjrctValue=' +
-                        selectProjrctValue,
+                    // url: '/?page=' + page + '&searchTaskValue=' + searchTaskValue + '&selectProjrctValue=' +
+                    //     selectProjrctValue,
                     success: function(data) {
                         $('tbody').html('');
                         $('tbody').html(data);
-                        // console.log(data);
+                        console.log(data);
                     }
                 });
                 console.log(page);
@@ -114,8 +114,7 @@
                 let page = $(this).attr('href').split('page=')[1];
                 let searchTaskValue = $('#search-input').val();
                 let selectProjrctValue = $('#filterSelectProjrctValue').val();
-                // console.log($(this).attr('href').split('page=')[1]);
-                // console.log($(this).attr('href'));
+              
                 fetchData(page, searchTaskValue, selectProjrctValue);
 
             });

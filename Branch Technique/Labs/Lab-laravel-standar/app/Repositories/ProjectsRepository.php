@@ -5,7 +5,7 @@ use App\Models\Project;
 use App\Models\BaseReRepository;
 
 class ProjectsRepository extends BaseRepository{
-    public function __construct(Project $projects){
+    public function __construct(Project $project){
         $this->model = $project ;
     }
     protected $fieldProject = [

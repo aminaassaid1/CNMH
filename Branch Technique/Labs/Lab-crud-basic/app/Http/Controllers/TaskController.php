@@ -76,13 +76,12 @@ class TaskController extends Controller
         return view('Tasks.edit', compact('task', 'Projects'));
     }
 
-
     public function show(Task $task)
     {
         $Projects = Project::all();
+
         return view('Tasks.show', compact('task', 'Projects'));
     }
-
 
     /**
      * Update the specified resource in storage.

@@ -2,79 +2,104 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Models\Task;
+use App\Models\Project;
+use App\Http\Requests\FormTaskRequest;
 
-class TasksController extends Controller
+class TaskController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index(Request $request)
     {
-        $keyword = $request->get('search');
-        $perPage = 5;
 
-        if (!empty($keyword)) {
-            $tasks = Task::where('name', 'LIKE', "%$keyword%")
-                ->latest()
-                ->paginate($perPage);
-        } else {
-            $tasks = Task::latest()->paginate($perPage);
+        $Projects = Project::all();
+
+        $Tasks = Task::with('project')->paginate(4);
+
+        if ($request->ajax()) {
+            $query = Task::query();
+            $Search = $request->get('searchTaskValue');
+            $Filter = $request->get('selectProjrctValue');
+            $Search = str_replace(' ', '%', $Search);
+
+            // pagination
+            if (empty($Search) && $Filter === "Filtrer par projet") {
+                return view('Tasks.Search', compact('Tasks', 'Projects'));
+            }
+            // search
+            if ($Search) {
+                $Tasks = $query->with('project')->where('name', 'like', '%' . $Search . '%')->paginate(4);
+            }
+            // filter
+            if ($Filter !== "Filtrer par projet") {
+                $Tasks = $query->where('project_id', $Filter)->paginate(3);
+            }
+            return view('Tasks.Search', compact('Tasks', 'Projects'))->render();
         }
 
-        return view('Tasks.index', [
-            'tasks' => $tasks,
-            'paginator' => $tasks,
-        ])->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('Tasks.index', compact('Tasks', 'Projects'));
+
+
     }
 
-
-
-    public function create(){
-        return view('tasks.create');
-    }
-
-    public function store(Request $request){
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required'
-        ]);
-
-        $task = new Task;
-        $task->name = $request->input('name');
-        $task->description = $request->input('description');
-
-        $task->save();
-
-        return redirect()->route('Tasks.index')->with('success', 'La tâche a été ajoutée avec succès');
-    }
-
-    public function edit($id)
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
     {
-        $task = Task::findOrFail($id);
-        return view('tasks.edit', compact('task'));
+        $Projects = Project::all();
+        return view('Tasks.create', compact('Projects'));
     }
 
-    public function update(Request $request,$id)
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(FormTaskRequest $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required'
-        ]);
+        // dd($request->validated());
+        Task::create($request->validated());
+        return redirect('/')->with('success', 'Tâche créée avec succès !');
 
-        $task = Task::findOrFail($id);
-        $data = $request->all();
-        if($task){
-
-            $task->update($data);
-        }
-
-
-        return redirect()->route('Tasks.index')->with('success', 'La tâche a été modifiée');
     }
 
-    public function destroy($id){
-        $task = Task::findOrFail($id);
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Task $task)
+    {
+        $Projects = Project::all();
+
+        return view('Tasks.edit', compact('task', 'Projects'));
+    }
+
+
+    public function show(Task $task)
+    {
+        $Projects = Project::all();
+        return view('Tasks.show', compact('task', 'Projects'));
+    }
+
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(FormTaskRequest $request, Task $task)
+    {
+        // dd($task);
+        $task->update($request->validated());
+        return redirect('/')->with('success', 'Tâche mise à jour avec succès !');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Task $task)
+    {
         $task->delete();
-        return redirect('Tasks')->with('success' , 'Tâche supprimée!');
+        return redirect('/')->with('success', 'Tâche supprimée avec succès !');
     }
-
 }

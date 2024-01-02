@@ -10,7 +10,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Ajouter Une Tâche</h3>
                         </div>
-                        <form action="{{route('store')}}" method="post">
+                        <form action="{{ route('store') }}" method="post">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
