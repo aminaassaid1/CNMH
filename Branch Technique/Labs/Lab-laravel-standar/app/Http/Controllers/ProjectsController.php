@@ -13,8 +13,8 @@ class ProjectsController extends Controller
 
     }
     public function index(){
-        $project = $this->projectRepository->index();
-        return view('Projects.index' , compact('project'));
+        $projects = $this->projectRepository->index();
+        return view('Projects.index' , compact('projects'));
 
 
     }

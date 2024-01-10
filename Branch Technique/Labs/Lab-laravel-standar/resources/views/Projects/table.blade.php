@@ -9,7 +9,7 @@
         </thead>
         <tbody>
 
-            @include('projectSearch')
+            @include('Projects.projectSearch')
 
         </tbody>
         <input type="hidden" id='page' value="1">

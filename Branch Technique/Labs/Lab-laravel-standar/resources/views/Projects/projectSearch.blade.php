@@ -25,7 +25,7 @@
     <td></td>
     <td>
         <div class="pagination m-0 float-right">
-            {{ $project->links() }}
+            {{ $projects->links() }}
         </div>
 
     </td>

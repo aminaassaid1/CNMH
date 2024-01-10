@@ -30,7 +30,7 @@
                                         <select class="form-select form-control" id="filterSelectProjrctValue"
                                             aria-label="Filter Select">
                                             <option value="Filtrer par projet">Filtrer par projet</option>
-                                            @foreach ($Projects as $Project)
+                                            @foreach ($projects as $Project)
                                                 <option value="{{ $Project->id }}" name="{{ $Project->id }}">
                                                     {{ $Project->name }}
                                                 </option>
@@ -47,7 +47,7 @@
                             </div>
                         </div>
                         <div id="search_ajax">
-                            @include('table')
+                            @include('Projects.table')
                         </div>
                     </div>
                 </div>
