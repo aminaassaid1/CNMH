@@ -1,33 +1,32 @@
-@extends('layouts.layout')
-
+@extends('layouts.master')
 
 @section('content')
 
-<div class="">
+<div class="content-wrapper pt-4" style="min-height: 1302.4px;">
 
-        <div class="" style="min-height: 1302.4px;">
+    <div class="content-header">
 
-            <div class="content-header">
-            </div>
-
-            <section class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-
-                            <div class="card card-primary">
-                                <div class="card-header">
-                                    <h3 class="card-title"> <i class="nav-icon fas fa-table"></i> Modifier un Projet</h3>
-                                </div>
-                               @include('tasks.form')
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </section>
-
-        </div>
     </div>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h2 class="card-title"> <i class="nav-icon fas fa-tasks"></i> Modifier Une Tâche</h2>
+                        </div>
+                        <!-- Inclusion du formulaire -->
+                        @include('tasks.form')
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</div>
 
 @endsection

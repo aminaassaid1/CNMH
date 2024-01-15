@@ -1,6 +1,6 @@
-{{-- footer --}}
 <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
+        <b>Version</b> 3.0.0
     </div>
-    <strong>Copyright © 2023-2024 <a href="https://adminlte.io">Solicoders</a>.</strong> Tous droits réservés.
+    <strong>Droits d'auteur © 2014-2021 <a href="https://github.com/hamidAchaou" class="text-info">Gestion de Projets</a>.</strong> Tous droits réservés.
 </footer>

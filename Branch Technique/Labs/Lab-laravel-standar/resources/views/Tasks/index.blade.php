@@ -1,118 +1,142 @@
-@extends('layouts.layout')
+@extends('layouts.master')
+
 @section('content')
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Liste des tâche</h1>
-                </div>
-                <div class="col-sm-6">
-                    <div class="float-sm-right">
-                        <a href="{{ route('tasks.create') }}" class="btn btn-sm btn-primary">Ajouter tâche</a>
+    <div class="content-wrapper" style="min-height: 1302.4px;">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>
+                            @if (isset($project))
+                                Tâches de {{ $project->nom }}
+                            @else
+                                Liste des tâches
+                            @endif
+                        </h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="float-sm-right">
+                            <a href="{{ route('taches.create', ['projectId' => $project->id]) }}" class="btn btn-info">
+                                <i class="fas fa-plus"></i> Nouveau Tâche
+                            </a>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <section class="content">
-        <div class="container-fluid">
-            {{-- start alert --}}
-            @if (session('success'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Success </strong> {{ session('success') }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            @endif
-            {{-- end alert --}}
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        @if (session('success'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('success') }}
+                            </div>
+                        @endif
 
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header ">
-                            {{-- filter --}}
-                            <div class="row d-flex justify-content-between">
-                                <div class="col-4">
-                                    <div class="input-group">
-                                        <label class="input-group-text" for="filterSelectProjrctValue"><i
-                                                class="fas fa-filter"></i></label>
-                                        <select class="form-select form-control" id="filterSelectProjrctValue"
-                                            aria-label="Filter Select">
-                                            <option value="Filtrer par projet">Filtrer par projet</option>
-                                            @foreach ($projects as $Project)
-                                                <option value="{{ $Project->id }}" name="{{ $Project->id }}">
-                                                    {{ $Project->nom }}
-                                                </option>
+                        @if (session('error'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ session('error') }}
+                            </div>
+                        @endif
+
+                        <div class="card">
+                            <div class="card-header col-md-12">
+                                <div class="d-flex justify-content-between">
+                                    <div class="btn-group mr-3">
+                                        <button type="button" class="btn btn-default dropdown-toggle"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa-solid fa-filter text-dark pr-2 border-right"></i>
+                                            <input type="hidden" name="projectId" id="projectId" value="{{ $project->id }}">
+                                            {{ $project->nom }}
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            @foreach ($projects as $project)
+                                                <a class="dropdown-item"
+                                                    href="{{ route('projects.tasks', ['projectId' => $project->id]) }}">{{ $project->nom }}</a>
                                             @endforeach
-                                        </select>
+                                        </div>
+                                    </div>
+
+
+                                    <div class=" p-0">
+                                        <div class="input-group input-group-sm">
+                                            <input type="text" name="search-input" id="search-input" class="form-control"
+                                                placeholder="Recherche">
+                                            <div class="input-group-append">
+                                                <button type="submit" class="btn btn-default">
+                                                    <i class="fas fa-search"></i>
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="input-group col-md-3">
-                                    <input type="text" class="form-control" placeholder="Recherche"
-                                        aria-label="Recherche" aria-describedby="basic-addon1" id="search-input">
-                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
-                                </div>
-
                             </div>
-                        </div>
-                        <div id="search_ajax">
-                            @include('Tasks.Table')
+
+                            <div class="card-body table-responsive p-0">
+                                @include('tasks.table')
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
-    {{-- script search by ajax --}}
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
-            function fetchData(page, searchTaskValue, selectProjrctValue) {
+            function fetchData(page, searchValue, projectId) {
+                // Choose either requestUrl or requestUr2
+                var requestUrl = "{{ url('projet') }}" + "/" + projectId + "/taches?page=" + page + "&searchValue=" + searchValue;
+                // var requestUr2 = "{{ route('taches.index') }}" + "?page=" + page + "&searchValue=" + searchValue;
+    
+                console.log("Request URL:", requestUrl);
+    
                 $.ajax({
-                    url: 'projects/?page=' + page + '&searchTaskValue=' + searchTaskValue + '&selectProjrctValue=' +
-                        selectProjrctValue,
+                    url: requestUrl, // Choose either requestUrl or requestUr2
                     success: function(data) {
+                        console.log(1);
+                        console.log(data);
                         $('tbody').html('');
                         $('tbody').html(data);
-                        console.log(data);
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.error("AJAX Error:", textStatus, errorThrown);
                     }
                 });
-                console.log(page);
-                console.log(searchTaskValue);
-                console.log(selectProjrctValue);
             }
-
-            $('body').on('click', '.pagination a', function(e) {
-
-                e.preventDefault();
-
-                let page = $(this).attr('href').split('page=')[1];
-                let searchTaskValue = $('#search-input').val();
-                let selectProjrctValue = $('#filterSelectProjrctValue').val();
-              
-                fetchData(page, searchTaskValue, selectProjrctValue);
-
+    
+            $('body').on('click', '.pagination a', function(event) {
+                event.preventDefault();
+    
+                var page = $(this).attr('href').split('page=')[1];
+                var searchValue = $('#search-input').val();
+                var projectId = $('#projectId').val();
+    
+                fetchData(page, searchValue, projectId);
             });
-
+    
             $('body').on('keyup', '#search-input', function() {
-                let page = $('#page').val();
-                let searchTaskValue = $('#search-input').val();
-                console.log(searchTaskValue);
-                let selectProjrctValue = $('#filterSelectProjrctValue').val();
-
-                fetchData(page, searchTaskValue, selectProjrctValue);
-
+                var page = 1;
+                var searchValue = $('#search-input').val();
+                var projectId = $('#projectId').val();
+    
+                fetchData(page, searchValue, projectId);
             });
-
-            $('#filterSelectProjrctValue').on('change', function() {
-                let page = $('#page').val();
-                let searchTaskValue = $('#search-input').val();
-                let selectProjrctValue = $(this).val();
-                fetchData(page, searchTaskValue, selectProjrctValue);
-            });
-
         });
+    </script>
+    
+    
+
+    <script>
+        function deleteTask(taskId) {
+            document.getElementById('Task_id').value = taskId;
+            document.getElementById('deleteForm').action = "{{ route('taches.destroy', ':taskId') }}".replace(':taskId',
+                taskId);
+        }
     </script>
 @endsection

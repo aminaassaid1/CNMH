@@ -1,56 +1,75 @@
-@extends('layouts.layout')
+@extends('layouts.master')
+
 @section('content')
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Liste des projets</h1>
-                </div>
-               
-            </div>
-        </div>
-    </div>
-    <section class="content">
-        <div class="container-fluid">
-        
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header ">
-                            {{-- filter --}}
-                            <div class="row d-flex justify-content-between">
-                                <div class="col-4">
-                                    <div class="input-group">
-                                        <label class="input-group-text" for="filterSelectProjrctValue"><i
-                                                class="fas fa-filter"></i></label>
-                                        <select class="form-select form-control" id="filterSelectProjrctValue"
-                                            aria-label="Filter Select">
-                                            <option value="Filtrer par projet">Filtrer par projet</option>
-                                            @foreach ($Projects as $Project)
-                                                <option value="{{ $Project->id }}" nom="{{ $Project->id }}">
-                                                    {{ $Project->nom }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="input-group col-md-3">
-                                    <input type="text" class="form-control" placeholder="Recherche"
-                                        aria-label="Recherche" aria-describedby="basic-addon1" id="search-input">
-                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="search_ajax">
-                            @include('Projects.table')
-                        </div>
+    <div class="content-wrapper" style="min-height: 1302.4px;">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Liste des projets</h1>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    
-  
-   
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header col-md-12">
+                                <div class=" p-0">
+                                    <div class="input-group input-group-sm float-sm-right col-md-3 p-0">
+                                        <input type="text" name="search-input" id="search-input" class="form-control float-right"
+                                            placeholder="Recherche">
+                                        <div class="input-group-append">
+                                            <button type="submit" class="btn btn-default">
+                                                <i class="fas fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-body table-responsive p-0">
+                                @include('projects.table')
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+<!-- Uncomment the jQuery script -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        function fetchData(page, searchValue) {
+            $.ajax({
+                url: 'projects/?page=' + page + '&searchValue=' + searchValue,
+                success: function(data) {
+                    $('tbody').html('');
+                    $('tbody').html(data);
+                }
+            });
+        }
+
+        $('body').on('click', '.pagination a', function(event) {
+            event.preventDefault();
+
+            var page = $(this).attr('href').split('page=')[1];
+            var searchValue = $('#search-input').val();
+
+            fetchData(page, searchValue);
+        });
+
+        $('body').on('keyup', '#search-input', function() {
+            var page = 1;
+            var searchValue = $('#search-input').val();
+            fetchData(page, searchValue);
+        });
+    });
+</script>
 
 @endsection

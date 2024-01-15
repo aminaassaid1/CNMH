@@ -1,31 +1,22 @@
-@foreach ($Tasks as $Task)
+@forelse ($tasks as $task)
     <tr>
-        <td>{{ $Task->nom }}</td>
-        <td>{{ ($Task->description) }} <a href="{{ route('projects.tasks', $Task->id) }}"></a></td>
-
-        <td class="d-flex">
-            <a href="{{ route('tasks.edit', ['task' => $Task->id]) }}" class="btn btn-sm btn-default mx-2">
+        <td>{{ $task->nom }}</td>
+        <td>{{ Str::limit($task->description, 30) }} <a href="{{ route('taches.show', $task->id) }}"> plus...</a></td>        <td>
+            <a href="{{ route('taches.show', ['tach' => $task->id]) }}" class='btn btn-default btn-sm'>
+                <i class="far fa-eye"></i>
+            </a>
+            <a href="{{ route('taches.edit', ['tach' => $task->id, 'projectId' => $project->id ]) }}" class="btn btn-sm btn-default">
                 <i class="fa-solid fa-pen-to-square"></i>
             </a>
-            <form action="{{ route('tasks.destroy', ['task' => $Task->id]) }}" method="post">
-                @csrf
-                @method('delete')
-                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')"><i
-                            class="fas fa-trash"></i></button>
-            </form>
-
-            
+            <button type="button" class="btn btn-sm btn-danger" onclick="deleteTask({{$task->id}})" data-toggle="modal" data-target="#deleteTask">
+                <i class="fa-solid fa-trash"></i>
+            </button>
+            {{-- get modal delete task --}}
+            <x-modal-delete-task />
         </td>
     </tr>
-@endforeach
-<tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td>
-        <div class="pagination m-0 float-right">
-            {{ $Tasks->links() }}
-        </div>
-
-    </td>
-</tr>
+@empty
+    <tr>
+        <td colspan="3" class="text-center">No Tache found</td>
+    </tr>
+@endforelse

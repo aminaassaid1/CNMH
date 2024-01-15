@@ -13,22 +13,32 @@ class TasksSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table("tasks")->insert([
+        DB::table('tasks')->insert([
             [
-                'nom' => 'creation base donner',
-                'description' => 'Développement d\'un site web mettant en valeur nos compétences.',
-                'projetId'=> '1',
+                'nom' => 'choisir le thème',
+                'description' => 'choisir le thème pour créer un portfolio',
+                'projetId' => '1',
             ],
             [
-                'nom' => 'Create a system for managing and booking event venues',
-                'description' => 'Création d\'une application web pour l\'évaluation des compétences.',
-                'projetId'=> '2',
+                'nom' => 'Choix des Technologies',
+                'description' => 'Évaluation et sélection des technologies les plus adaptées pour développer l\'application Arbre des Compétences.',
+                'projetId' => '2',
             ],
             [
-                'nom' => '  Implement a ticketing system for selling event tickets online',
-                'description' => 'Création d\'une application web pour laa gestion des patients de centre cnmh.',
-                'projetId'=> '3',
-            ]
+                'nom' => 'Design wireframes for CNMH Application',
+                'description' => 'Create wireframes detailing the layout and functionalities of the CNMH application.',
+                'projetId' => '3',
+            ],
+            [
+                'nom' => 'Develop basic database structure',
+                'description' => 'Design and implement the basic database structure for the CNMH application.',
+                'projetId' => '3',
+            ],
+            [
+                'nom' => 'Build user authentication system',
+                'description' => 'Implement user authentication and authorization functionalities for the CNMH application.',
+                'projetId' => '3',
+            ],
         ]);
     }
 }
