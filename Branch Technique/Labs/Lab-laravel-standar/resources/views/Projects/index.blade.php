@@ -4,19 +4,15 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Liste des tâche</h1>
+                    <h1>Liste des projets</h1>
                 </div>
-                <div class="col-sm-6">
-                    <div class="float-sm-right">
-                        {{-- <a href="{{ route('create') }}" class="btn btn-sm btn-primary">Ajouter tâche</a> --}}
-                    </div>
-                </div>
+               
             </div>
         </div>
     </div>
     <section class="content">
         <div class="container-fluid">
-
+        
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -30,9 +26,9 @@
                                         <select class="form-select form-control" id="filterSelectProjrctValue"
                                             aria-label="Filter Select">
                                             <option value="Filtrer par projet">Filtrer par projet</option>
-                                            @foreach ($projects as $Project)
-                                                <option value="{{ $Project->id }}" name="{{ $Project->id }}">
-                                                    {{ $Project->name }}
+                                            @foreach ($Projects as $Project)
+                                                <option value="{{ $Project->id }}" nom="{{ $Project->id }}">
+                                                    {{ $Project->nom }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -43,7 +39,6 @@
                                         aria-label="Recherche" aria-describedby="basic-addon1" id="search-input">
                                     <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
                                 </div>
-
                             </div>
                         </div>
                         <div id="search_ajax">
@@ -54,4 +49,8 @@
             </div>
         </div>
     </section>
+    
+  
+   
+
 @endsection

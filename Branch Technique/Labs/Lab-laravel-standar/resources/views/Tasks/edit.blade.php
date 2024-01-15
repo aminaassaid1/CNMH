@@ -1,59 +1,33 @@
-@extends('../Layouts.Layout')
+@extends('layouts.layout')
+
+
 @section('content')
-    <div class="content-header">
-    </div>
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
 
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Edit Tâche </h3>
-                        </div>
-                        <form action="{{ route('update', ['task' => $task->id]) }}" method="post">
-                            @csrf
-                            @method('put')
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label for="Projet">Projet<span class="text-danger">*</span></label>
-                                    <select id="Projet" name="project_id" class="custom-select">
-                                        @foreach ($Projects as $Project)
-                                            <option @selected($Project->id == $task->Project->id) value="{{ $Project->id }}"
-                                                name="{{ $Project->id }}">
-                                                {{ $Project->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
+<div class="">
 
-                                <div class="form-group">
-                                    <label for="Projet">Nom <span class="text-danger">*</span></label>
-                                    <input type="text" name="name"
-                                        class="form-control @error('name') border-danger @enderror"
-                                        value="{{ $task->name }}" id="name" placeholder="Enter le name de Tâche">
-                                    @error('name')
-                                        <p class="text-danger">{{ $message }}</p>
-                                    @enderror
-                                </div>
+        <div class="" style="min-height: 1302.4px;">
 
-                                <div class="form-group">
-                                    <label for="description">Description</label>
-                                    <textarea id="description" class="form-control" name="description" rows="3" placeholder="Entre un Description ">{{ $task->description }}</textarea>
-                                </div>
-
-                            </div>
-
-                            <div class="card-footer">
-                                <a href="{{ route('index') }}" class="btn btn-default">annuler</a>
-                                <button type="submit" class="btn btn-primary">update</button>
-                            </div>
-                        </form>
-                    </div>
-
-                </div>
+            <div class="content-header">
             </div>
-        </div>
 
-    </section>
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title"> <i class="nav-icon fas fa-table"></i> Modifier un Projet</h3>
+                                </div>
+                               @include('tasks.form')
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
+    </div>
+
 @endsection

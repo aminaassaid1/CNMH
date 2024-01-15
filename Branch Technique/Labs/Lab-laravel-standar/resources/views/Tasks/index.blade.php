@@ -8,7 +8,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="float-sm-right">
-                        <a href="{{ route('create') }}" class="btn btn-sm btn-primary">Ajouter tâche</a>
+                        <a href="{{ route('tasks.create') }}" class="btn btn-sm btn-primary">Ajouter tâche</a>
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@
                                             <option value="Filtrer par projet">Filtrer par projet</option>
                                             @foreach ($projects as $Project)
                                                 <option value="{{ $Project->id }}" name="{{ $Project->id }}">
-                                                    {{ $Project->name }}
+                                                    {{ $Project->nom }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -57,11 +57,62 @@
                             </div>
                         </div>
                         <div id="search_ajax">
-                            @include('Tasks.table')
+                            @include('Tasks.Table')
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    {{-- script search by ajax --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            function fetchData(page, searchTaskValue, selectProjrctValue) {
+                $.ajax({
+                    url: 'projects/?page=' + page + '&searchTaskValue=' + searchTaskValue + '&selectProjrctValue=' +
+                        selectProjrctValue,
+                    success: function(data) {
+                        $('tbody').html('');
+                        $('tbody').html(data);
+                        console.log(data);
+                    }
+                });
+                console.log(page);
+                console.log(searchTaskValue);
+                console.log(selectProjrctValue);
+            }
+
+            $('body').on('click', '.pagination a', function(e) {
+
+                e.preventDefault();
+
+                let page = $(this).attr('href').split('page=')[1];
+                let searchTaskValue = $('#search-input').val();
+                let selectProjrctValue = $('#filterSelectProjrctValue').val();
+              
+                fetchData(page, searchTaskValue, selectProjrctValue);
+
+            });
+
+            $('body').on('keyup', '#search-input', function() {
+                let page = $('#page').val();
+                let searchTaskValue = $('#search-input').val();
+                console.log(searchTaskValue);
+                let selectProjrctValue = $('#filterSelectProjrctValue').val();
+
+                fetchData(page, searchTaskValue, selectProjrctValue);
+
+            });
+
+            $('#filterSelectProjrctValue').on('change', function() {
+                let page = $('#page').val();
+                let searchTaskValue = $('#search-input').val();
+                let selectProjrctValue = $(this).val();
+                fetchData(page, searchTaskValue, selectProjrctValue);
+            });
+
+        });
+    </script>
 @endsection
