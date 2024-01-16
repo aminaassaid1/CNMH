@@ -1,22 +1,33 @@
-@forelse ($tasks as $task)
+@forelse ($Tasks as $Task)
     <tr>
-        <td>{{ $task->nom }}</td>
-        <td>{{ Str::limit($task->description, 30) }} <a href="{{ route('taches.show', $task->id) }}"> plus...</a></td>        <td>
-            <a href="{{ route('taches.show', ['tach' => $task->id]) }}" class='btn btn-default btn-sm'>
-                <i class="far fa-eye"></i>
+        <td>{{ $Task->nom }}</td>
+        <td>{{ Str::limit($Task->description, 30) }}</td>
+
+        <td class="">
+            <a href="{{ route('tasks.show', ['task' => $Task->id]) }}" class="btn btn-sm btn-default mx-2">
+                <i class="fa-regular fa-eye"></i>
             </a>
-            <a href="{{ route('taches.edit', ['tach' => $task->id, 'projectId' => $project->id ]) }}" class="btn btn-sm btn-default">
+            <a href="{{ route('tasks.edit', ['task' => $Task->id]) }}" class="btn btn-sm btn-default mx-2">
                 <i class="fa-solid fa-pen-to-square"></i>
             </a>
-            <button type="button" class="btn btn-sm btn-danger" onclick="deleteTask({{$task->id}})" data-toggle="modal" data-target="#deleteTask">
+            <button type="submit" class="btn btn-sm btn-danger" onclick="deleteTask({{ $Task->id }})" data-toggle="modal"
+                    data-target="#deleteTask">
                 <i class="fa-solid fa-trash"></i>
             </button>
-            {{-- get modal delete task --}}
-            <x-modal-delete-task />
         </td>
     </tr>
 @empty
     <tr>
-        <td colspan="3" class="text-center">No Tache found</td>
+        <td colspan="3" class="text-center">Aucune tâche trouvée.</td>
     </tr>
 @endforelse
+
+<tr>
+    <td></td>
+    <td></td>
+    <td>
+        <div class="pagination m-0 float-right">
+            {{ $Tasks->links() }}
+        </div>
+    </td>
+</tr>

@@ -1,25 +1,18 @@
-@foreach ($Projects as $Project)
+@forelse ($Projects as $project)
     <tr>
-        <td>{{ $Project->nom}}</td>
-
-        <td>{{ ($Project->description) }} 
-
-        <td class="d-flex">
-            <a href="{{ route('projects.tasks',['projetId'=> $Project->id] )}}" class="btn btn-sm btn-default mx-2">
-                <i class="fa-regular fa-eye"></i>
+        <td>{{ $project->nom }}</td>
+        <td>{{ Str::limit($project->description, 30) }} <a href="{{ route('projects.show', $project->id) }}"> plus...</a></td>        <td>
+        <td>
+            <a href="{{ route('projects.show', ['project' => $project->id]) }}" class='btn btn-default btn-sm'>
+                <i class="far fa-eye"></i>
             </a>
-        
+            <a href="{{ route('projects.tasks', ['projetId' => $project->id]) }}" class="btn btn-sm btn-info">
+                <i class="fas fa-tasks"></i> Les Tâches
+            </a>
         </td>
-    </tr> 
-@endforeach
-<tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td>
-        <div class="pagination m-0 float-right">
-            {{ $Projects->links() }}
-        </div>
-
-    </td>
-</tr>
+    </tr>
+@empty
+    <tr>
+        <td colspan="3" class="text-center">No projects found</td>
+    </tr>
+@endforelse

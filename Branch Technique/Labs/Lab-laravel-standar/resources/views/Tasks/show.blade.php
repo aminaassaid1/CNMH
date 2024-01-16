@@ -1,7 +1,6 @@
-@extends('layouts.master')
-
+@extends('layouts.layout')
 @section('content')
-<div class="content-wrapper" style="min-height: 1302.4px;">
+<div class="content" style="min-height: 1302.4px;">
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -10,7 +9,7 @@
                 </div>
                 <div class="col-sm-6">
                     {{-- Add your edit button or other actions --}}
-                    <a href="{{ route('taches.edit', ["tach" => $task->id])}}" class="btn btn-default float-right">
+                    <a href="{{ route('tasks.edit', ["task" => $task->id])}}" class="btn btn-default float-right">
                         <i class="far fa-edit"></i> Modifier
                     </a>
                 </div>

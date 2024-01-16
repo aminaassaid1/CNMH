@@ -27,5 +27,20 @@ class TasksRepository extends BaseRepository
     return $this->model->where('projetId', $projetId)->paginate(4);
      
    }
+
+   public function searchTasks($searchTask)
+    {
+        $get_data =  $this->model->where(function ($query) use ($searchTask) {
+            $query->where('nom', 'like', '%' . $searchTask . '%')
+                ->orWhere('description', 'like', '%' . $searchTask . '%');
+        });
+
+     
+
+      
+        return $get_data->paginate(4);
+
+    
+    }
  
 }

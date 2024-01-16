@@ -1,39 +1,45 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Repository\ProjectRepository;
+
 use Illuminate\Http\Request;
+use App\Repositories\ProjectsRepository;
+
 
 class ProjectsController extends Controller
 {
-    protected $projectRepository;
-
-    public function __construct(ProjectRepository $projectRepository)
-    {
-        $this->projectRepository = $projectRepository;
-    }
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
-    {
+
+     protected $projectRepository;
+    
+     public function __construct(ProjectsRepository $projectRepository){
+         $this->projectRepository = $projectRepository;
+     }
+    
+     public function index(Request $request){
+        $Projects = $this->projectRepository->index();
+
         if ($request->ajax()) {
             $searchQuery = $request->get('searchValue');
             $searchQuery = str_replace(' ', '%', $searchQuery);
-            $projects = $this->projectRepository->searchProjects($searchQuery);
-    
-            return view('projects.search', compact('projects'))->render();
+            $Projects = $this->projectRepository->searchProjects($searchQuery);
+          
+            return view('Projects.projectSearch', compact('Projects'));
         }
-    
-        $projects = $this->projectRepository->getAll();
-        return view('projects.index', compact('projects'));
-    }
-    
 
+        return view('Projects.index' , compact('Projects'));
+    }
+
+
+    
+   
     public function show($project)
     {
         $project = $this->projectRepository->find($project);
 
-        return view('projects.show', compact('project'));
+        return view('Projects.show', compact('project'));
     }
+
 }

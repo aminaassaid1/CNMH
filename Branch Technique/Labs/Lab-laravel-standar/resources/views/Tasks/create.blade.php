@@ -1,6 +1,7 @@
-@extends('layouts.master')
+@extends('layouts.layout')
 
 @section('content')
+
 
 <div class="content-wrapper pt-4" style="min-height: 1302.4px;">
 
